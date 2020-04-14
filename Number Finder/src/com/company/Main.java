@@ -10,22 +10,30 @@ public class Main {
 
         int guess = 0;
         int start = keyboard.nextInt();
+        int min = 1;
+        int max = 100;
+        int randomNumber=0;
 
-        int randomNumber = ThreadLocalRandom.current().nextInt(1, 101);
+        do {
+            randomNumber = ThreadLocalRandom.current().nextInt(min, max);
+            System.out.println(randomNumber);
 
-
-
-        while(true){
             if(randomNumber < start) {
-                randomNumber = ThreadLocalRandom.current().nextInt(1, 101);
+                min=randomNumber+1;
                 guess++;
+
             }
-            if(randomNumber > start) {
-                randomNumber = ThreadLocalRandom.current().nextInt(1, 101);
+                else if(randomNumber > start) {
+                max = randomNumber-1;
                 guess++;
+
             }
+            }
+        while(randomNumber != start);
+        System.out.println("The correct answer was:" + start);
+        System.out.format("You guessed %d after %d guesses",randomNumber, guess);
         }
 
     }
 
-}
+
